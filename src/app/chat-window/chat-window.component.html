@@ -1,0 +1,30 @@
+
+<div class="container">
+  <h2>Chat</h2>
+</div>
+
+<div class="container">
+  <h3>Nachrichten</h3>
+</div>
+<div class="container" *ngIf="messagesList">
+  <ul>
+    <li *ngFor="let message of messagesList">
+      <div *ngIf="message.sender == myUserID; else myUserName">
+        {{ message.senderName }}
+      </div>
+      <div>
+        <ng-template #myUserName>Ich</ng-template>
+      </div>
+       - {{ message.timeStamp }}: {{ message.text }}</li>
+  </ul>
+</div>
+
+<div class="container">
+    <div>
+      <label for="messageInput">Neue Nachricht</label>
+      <br>
+      <textarea [(ngModel)]="newMessage.text" id="messageInput"></textarea>
+    </div>
+    <button class="btn btn-primary" (click)="sendMessage()">Senden</button>
+  <button class="btn btn-primary" (click)="loadMessages()">Lade Nachrichten</button>
+</div>
