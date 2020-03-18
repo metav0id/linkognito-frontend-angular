@@ -23,3 +23,10 @@ p, a {
 .bg-geschaeft {
   background-color: #5ca4a9;
 }
+
+.fullHeight-center {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

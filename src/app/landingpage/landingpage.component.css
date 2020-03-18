@@ -6,9 +6,3 @@ p {
   margin: auto 10px;
 }
 
-.landingpage {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
