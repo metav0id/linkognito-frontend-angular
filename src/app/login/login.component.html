@@ -1,0 +1,15 @@
+<div *ngIf="!showRegistrierung">
+  Name: <input type = "text">
+  Password: <input type = "password">
+</div>
+
+<div *ngIf="showRegistrierung">
+  Name: <input type = "text">
+  Email: <input type = "email">
+  Password: <input type = "password">
+</div>
+
+<div class="row my-3">
+  <button class="btn" (click)="toogleLogin()">Login</button>
+  <button class="btn" (click)="toogleShowRegistierung()">Registrieren</button>
+</div>

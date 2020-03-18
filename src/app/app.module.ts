@@ -7,12 +7,14 @@ import { ChatWindowComponent } from './chat-window/chat-window.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatWindowComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,
