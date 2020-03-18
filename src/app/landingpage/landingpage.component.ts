@@ -11,4 +11,14 @@ export class LandingpageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  private showContent = false;
+
+  getShowContent(){
+    return this.showContent;
+  }
+
+  toggleShowContent(){
+    this.showContent = true;
+  }
 }

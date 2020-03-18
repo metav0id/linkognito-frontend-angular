@@ -2,6 +2,13 @@ p {
   text-align: center;
 }
 
-.btn.geschaeft {
-  background-color: #5ca4a9;
+.btn {
+  margin: auto 10px;
+}
+
+.landingpage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

@@ -1,5 +1,13 @@
 <div class="container">
-  <p>Benutze das App als</p>
-  <button class = "btn" >Private</button>
-  <button class = "btn geschaeft" >Geschäft</button>
+  <div class="landingpage" *ngIf="!getShowContent()">
+    <p>Benutze das App als</p>
+    <div class="row justify-content-center">
+      <a href=# class = "btn col-1" (click)="toggleShowContent()">Private</a>
+      <a href=# class = "btn bg-geschaeft col-1" >Geschäft</a>
+    </div>
+
+  </div>
+
+  <div class="justify-content-center" *ngIf="getShowContent()">
+  </div>
 </div>
