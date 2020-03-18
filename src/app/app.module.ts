@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatWindowComponent
+    ChatWindowComponent,
+    LandingpageComponent
   ],
     imports: [
         BrowserModule,
