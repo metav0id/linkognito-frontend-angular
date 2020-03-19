@@ -1,11 +1,14 @@
 
 
 <h1>Contacts:</h1>
-<ul class="contacts" >
+<ul>
 
   <li *ngFor="let contact of contacts" >
     <a routerLink="/chat/{{contact.id}}">
       <span class="badge">{{contact.name}}</span>
+    </a>
+    <a routerLink="/update/{{contact.id}}">
+      <span class="badge">edit</span>
     </a>
   </li>
 

@@ -11,7 +11,9 @@ import { ContactViewService} from "../services/contact-view.service";
 })
 export class ContactViewUpdateComponent implements OnInit {
 
-  @Input() contact: ContactInterface;
+  contact: ContactInterface;
+
+
 
   constructor(
     private route: ActivatedRoute,
@@ -20,12 +22,17 @@ export class ContactViewUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getContact();
 
   }
 
   getContact(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.contactViewService.getContact(id).subscribe(contact => this.contact = contact);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
