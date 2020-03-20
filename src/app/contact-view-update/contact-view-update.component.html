@@ -1,0 +1,9 @@
+<div *ngIf="contact">
+  <h2 class="orange"> change contact-name</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="contact.name" placeholder="name" />
+    </label>
+    <button (click)="goBack()">go back</button>
+  </div>
+</div>

@@ -1,14 +1,21 @@
 <div class="container">
-  <div class="fullHeight-center" *ngIf="!getShowContent()">
-    <p>Benutze das App als</p>
-    <div class="row justify-content-center">
-      <a href=# class = "btn col-1" (click)="toggleShowContent()">Private</a>
-      <a href=# class = "btn bg-geschaeft col-1" >Geschäft</a>
-    </div>
-
-  </div>
-
-  <div class="fullHeight-center" *ngIf="getShowContent()">
-    <app-login></app-login>
-  </div>
+  <p>Login as</p>
+  <button class = "btn private" routerLink="/contacts/">Private</button>
+  <button class = "btn business" >Business</button>
 </div>
+
+<!--With Styling-->
+<!--<div class="container">-->
+<!--  <div class="fullHeight-center" *ngIf="!getShowContent()">-->
+<!--    <p>Benutze das App als</p>-->
+<!--    <div class="row justify-content-center">-->
+<!--      <a href=# class = "btn col-1" (click)="toggleShowContent()">Private</a>-->
+<!--      <a href=# class = "btn bg-geschaeft col-1" >Geschäft</a>-->
+<!--    </div>-->
+
+<!--  </div>-->
+
+<!--  <div class="fullHeight-center" *ngIf="getShowContent()">-->
+<!--    <app-login></app-login>-->
+<!--  </div>-->
+<!--</div>-->

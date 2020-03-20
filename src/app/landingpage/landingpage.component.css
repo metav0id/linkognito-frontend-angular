@@ -2,7 +2,6 @@ p {
   text-align: center;
 }
 
-.btn {
-  margin: auto 10px;
+.btn.business {
+  background-color: #5ca4a9;
 }
-
