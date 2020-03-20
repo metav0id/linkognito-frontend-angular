@@ -16,7 +16,23 @@ h1, h2, h3, h4, h5, h6 {
   color: #16343c;
 }
 
-p, a {
-  font-family: 'Lato', sans-serif;
+form-group a {
+  color: #ed6a5a;
+  text-decoration: underline ;
 }
 
+p, a {
+  font-family: 'Lato', sans-serif;
+  color: inherit;
+}
+
+.btn.business {
+  background-color: #5ca4a9;
+}
+
+.fullHeight-center {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
