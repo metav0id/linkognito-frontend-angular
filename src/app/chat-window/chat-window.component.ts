@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ChatMessage} from "../interfaces/chat-message";
 import {HttpClient} from "@angular/common/http";
+import {from, interval, observable, Observable} from "rxjs";
+import {startWith, switchMap} from "rxjs/operators";
+import {ChatApiServiceService} from "../services/chat-api-service.service";
 
 @Component({
   selector: 'app-chat-window',
@@ -8,36 +11,35 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./chat-window.component.css']
 })
 export class ChatWindowComponent implements OnInit {
+  private readonly UPDATE_CYCLE_IN_MILLISECONDS : number = 5000;
 
   messagesList: ChatMessage[] = [];
-  newMessage: ChatMessage = { senderName: '', receiver:0, sender: 0, text: '', timeStamp: '' };
+  newMessage: ChatMessage = { senderName: '', id:0, addressId: 0, text: '', timeStamp: '' };
 
   myUserID : number = 10;
 
-  //TODO implement HTTPClient
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private apiService: ChatApiServiceService) { }
 
+  //**on load all chat messages are called by REST API and
+  //update cycle is started
   ngOnInit(): void {
-    let myUrl: string = "http://localhost:8080/readNewMessages";
-    this.httpClient.get<ChatMessage[]>(myUrl).subscribe(messages => this.messagesList = messages);
-   /* this.loadMessages();*/
-  }
-
-  //**Message will be loaded from Service Module via REST-API
-  loadMessages(){
-    console.log("Loading messages...")
-    //TODO implement REST API Call
-    this.messagesList[0] = { senderName: 'Nga', receiver:5, sender: 10, text: 'Hallo Welt', timeStamp: '19:01-17.03.2020' };
-    this.messagesList[1] = { receiver:10, sender: 5, text: 'Hallo Welt', timeStamp: '19:01-17.03.2020' };
-
-
+    //ToDO Differentiate by clientID
+    this.apiService.loadMessages().subscribe(messages => this.messagesList = messages);
+    this.checkForNewMessage();
   }
 
   //**Message will be sent to Service Module via REST-API
   sendMessage(){
    //TODO implement REST API Call to send message to Service module
     console.log(this.newMessage);
-
-
+  }
+  //ToDO Differentiate by clientID
+  //**Receive single messages from Server by checking in interval
+  checkForNewMessage(){
+    interval(this.UPDATE_CYCLE_IN_MILLISECONDS).pipe(
+      switchMap(() => this.apiService.getNewMessages())
+    ).subscribe(messages => {
+      this.messagesList = this.messagesList.concat(messages);
+    })
   }
 }

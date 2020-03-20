@@ -9,7 +9,7 @@
 <div class="container" *ngIf="messagesList">
   <ul>
     <li *ngFor="let message of messagesList">
-      <div *ngIf="message.sender == myUserID; else myUserName">
+      <div *ngIf="message.id != myUserID; else myUserName">
         {{ message.senderName }}
       </div>
       <div>
@@ -26,7 +26,7 @@
       <textarea [(ngModel)]="newMessage.text" id="messageInput"></textarea>
     </div>
     <button class="btn btn-primary" (click)="sendMessage()">Senden</button>
-  <button class="btn btn-primary" (click)="loadMessages()">Lade Nachrichten</button>
+
 </div>
 
 <div class="container">
