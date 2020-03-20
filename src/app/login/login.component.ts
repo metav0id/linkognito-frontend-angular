@@ -25,5 +25,11 @@ export class LoginComponent implements OnInit {
     this.getUserObservable.subscribe(
       (result) => {this.user = result}
     )
+
+    if(this.user){
+      //TODO: Show page
+    } else {
+      //TODO: WARNING
+    }
   }
 }
