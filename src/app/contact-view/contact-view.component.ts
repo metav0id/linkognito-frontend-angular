@@ -23,6 +23,11 @@ export class ContactViewComponent implements OnInit {
     this.getContacts();
   }
 
+  deleteContact(contact: ContactInterface): void {
+    this.contacts = this.contacts.filter(c => c !== contact);
+    this.contactViewService.deleteContact(contact).subscribe();
+  }
+
 
 
 }
