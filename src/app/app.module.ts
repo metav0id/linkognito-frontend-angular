@@ -13,14 +13,11 @@ import { RoutingComponent } from './routing.component';
 import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-<<<<<<< HEAD
-import { QrGenerateComponent } from './qr-generate/qr-generate.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {QrGenerateComponent} from './qr-generate/qr-generate.component';
 import {QRCodeModule} from 'angularx-qrcode';
-=======
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 
->>>>>>> 9196f525d823bdb7efccb610c889fc815f7bea93
 
 @NgModule({
   declarations: [
@@ -33,12 +30,8 @@ import { RegisterComponent } from './register/register.component';
     ContactViewUpdateComponent,
     NotificationsComponent,
     RoutingComponent,
-<<<<<<< HEAD
     QrGenerateComponent,
-=======
     RegisterComponent,
->>>>>>> 9196f525d823bdb7efccb610c889fc815f7bea93
-
   ],
   imports: [
     BrowserModule,
