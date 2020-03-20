@@ -14,7 +14,7 @@ export class ChatWindowComponent implements OnInit {
   private readonly UPDATE_CYCLE_IN_MILLISECONDS : number = 5000;
 
   messagesList: ChatMessage[] = [];
-  newMessage: ChatMessage = { senderName: '', id:0, addressId: 0, text: '', timeStamp: '' };
+  newMessage: ChatMessage = { name: '', id:0, addressId: 0, text: '', time: '' };
 
   myUserID : number = 10;
 
@@ -33,6 +33,7 @@ export class ChatWindowComponent implements OnInit {
    //TODO implement REST API Call to send message to Service module
     console.log(this.newMessage);
   }
+
   //ToDO Differentiate by clientID
   //**Receive single messages from Server by checking in interval
   checkForNewMessage(){
@@ -42,4 +43,5 @@ export class ChatWindowComponent implements OnInit {
       this.messagesList = this.messagesList.concat(messages);
     })
   }
+
 }

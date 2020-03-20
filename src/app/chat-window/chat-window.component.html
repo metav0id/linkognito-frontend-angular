@@ -10,12 +10,12 @@
   <ul>
     <li *ngFor="let message of messagesList">
       <div *ngIf="message.id != myUserID; else myUserName">
-        {{ message.senderName }}
+        {{ message.name }}
       </div>
       <div>
         <ng-template #myUserName>Ich</ng-template>
       </div>
-       - {{ message.timeStamp }}: {{ message.text }}</li>
+       - {{ message.time }}: {{ message.text }}</li>
   </ul>
 </div>
 

@@ -1,7 +1,7 @@
 export interface ChatMessage {
-  id: number;
-  addressId: number;
-  timeStamp?: string;
-  text: string;
-  senderName?: string; //only for user-module use
+  id?: number;
+  addressId?: number;
+  time?: string;
+  name?: string;
+  text?: string;
 }
