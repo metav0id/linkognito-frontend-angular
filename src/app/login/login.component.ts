@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from "../interfaces/user";
+import {LoginService} from "../services/login.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -7,18 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  showRegistrierung = false;
+  user: User;
+  getUserObservable: Observable<User>;
 
-  constructor() { }
+
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
-  toogleLogin(){
-    this.showRegistrierung = false;
+  login(){
+    this.loginService.login(this.user);
+    this.getUserObservable = this.loginService.getUserObservable;
+    this.getUserObservable.subscribe(
+      (result) => {this.user = result}
+    )
   }
-  toogleShowRegistierung(){
-    this.showRegistrierung = true;
-  }
-
 }
