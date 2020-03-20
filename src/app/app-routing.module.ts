@@ -6,6 +6,11 @@ import { LandingpageComponent} from "./landingpage/landingpage.component";
 import { ContactViewUpdateComponent} from "./contact-view-update/contact-view-update.component";
 
 
+/**
+ * Routes-file contains all subpages of user-module.
+ * First entry (redirectTo) specifies starting-page
+ */
+
 const routes: Routes = [
   { path: '', redirectTo: '/landingpage', pathMatch: 'full'},
   { path: 'landingpage', component: LandingpageComponent},
