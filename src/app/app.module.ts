@@ -10,7 +10,8 @@ import {ContactViewComponent} from "./contact-view/contact-view.component";
 import { ContactViewUpdateComponent } from './contact-view-update/contact-view-update.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { RoutingComponent } from './routing.component';
-
+import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 
 @NgModule({
@@ -29,7 +30,10 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(
+          InMemoryDataService, {dataEncapsulation: false}
+        )
     ],
   providers: [],
   bootstrap: [AppComponent]

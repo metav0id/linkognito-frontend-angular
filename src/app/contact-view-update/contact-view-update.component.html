@@ -1,9 +1,27 @@
+<div class="container">
 <div *ngIf="contact">
   <h2 class="orange"> change contact-name</h2>
   <div>
     <label>name:
       <input [(ngModel)]="contact.name" placeholder="name" />
     </label>
-    <button (click)="goBack()">go back</button>
   </div>
+  <div *ngIf="contact.active == true">
+    <label>
+      contact is active:
+    </label>
+  </div>
+  <div *ngIf="contact.active == false">
+    <label>
+      contact is expired:
+    </label>
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="editContact()">confirm</button>
+  </div>
+
+  <div>
+  <button class="btn btn-primary" (click)="goBack()">abort</button>
+  </div>
+</div>
 </div>

@@ -1,18 +1,42 @@
 
-
+<div class="container">
 <h1>Contacts:</h1>
-<ul>
 
-  <li *ngFor="let contact of contacts" >
-    <a routerLink="/chat/{{contact.id}}">
-      <span class="badge">{{contact.name}}</span>
-    </a>
-    <a routerLink="/update/{{contact.id}}">
-      <span class="badge">edit</span>
-    </a>
-  </li>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" >Contact (tap to chat)</th>
+      <th scope="col" > </th>
 
-</ul>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let contact of contacts; index as i">
+      <th scope="row">{{ i + 1 }}
+      </th>
+       <td routerLink="/chat/{{contact.id}}">
+        <span class="badge">{{contact.name}}</span>
+      </td>
+      <td>
+        <button routerLink="/update/{{contact.id}}" class="badge">edit</button>
+      </td>
+      <td>
+        <button (click)="deleteContact(contact)" class="badge">delete</button>
+
+      </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+<div class="container">
+  <button class="btn btn-primary" routerLink="/createQRCode/">show QR-Code</button>
+  <button class="btn btn-primary" routerLink="/scanQRCode/">scan QR-Code</button>
+</div>
 
 
 
