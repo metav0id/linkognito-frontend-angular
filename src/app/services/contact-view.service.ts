@@ -5,6 +5,8 @@ import { NotificationsService} from "./notifications.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from "rxjs/operators";
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +31,8 @@ export class ContactViewService {
   /** GET-Method for contact-list */
 
   getContacts(): Observable<ContactInterface[]> {
+
+
     return this.http.get<ContactInterface[]>(this.contactsUrl)
       .pipe(
         tap(_ => this.log('loaded contacts from database')),

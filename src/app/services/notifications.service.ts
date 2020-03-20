@@ -5,6 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class NotificationsService {
 
+  /**
+   * to implement notifications-service:
+   * import in component, call 'add'-function to add text
+   *
+   */
+
   notifications: string[] = [];
 
   add(notification: string) {

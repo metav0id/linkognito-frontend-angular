@@ -3,6 +3,8 @@ import { ContactInterface } from '../interfaces/contact.interface';
 import { ContactViewService } from '../services/contact-view.service';
 import {NotificationsService} from "../services/notifications.service";
 
+import { MOCKCONTACTS} from "./MockContacts";
+
 
 @Component({
   selector: 'app-contact-view',
@@ -14,7 +16,8 @@ export class ContactViewComponent implements OnInit {
   contacts: ContactInterface[];
 
   getContacts(): void {
-    this.contactViewService.getContacts().subscribe(contacts => this.contacts = contacts);
+    this.contacts = MOCKCONTACTS;
+    // this.contactViewService.getContacts().subscribe(contacts => this.contacts = contacts);
   }
 
   deleteContact(contact: ContactInterface): void {
