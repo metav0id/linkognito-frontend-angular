@@ -18,6 +18,6 @@ export class RegisterComponent implements OnInit {
 
 
   addNewUSer() {
-    this.registerService.addNewUser(this.newUser).subscribe();
+    this.registerService.addNewUser(this.newUser).subscribe(() => this.ngOnInit());
   }
 }
