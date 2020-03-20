@@ -1,6 +1,6 @@
 import { ContactInterface } from '../interfaces/contact.interface';
 
-export const MOCKCONTACTS = [
+export const MockContacts = [
   {id: 1, name: 'MeraLunaChick (Morticia???)', qrcode: 'abcdefg', active: true},
   {id: 2, name: 'HurricaneDude (drunken fin)', qrcode: 'abcdefg', active: true},
   {id: 3, name: 'DeichbrandAffair', qrcode: 'abcdefg', active: true},

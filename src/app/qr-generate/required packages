@@ -1,0 +1,2 @@
+normalerweise reicht -> npm install angularx-qrcode --save
+ sonst wenn es immer noch nicht funktionniert: -> npm ci
