@@ -14,7 +14,6 @@ export class ContactViewUpdateComponent implements OnInit {
   contact: ContactInterface;
 
 
-
   constructor(
     private route: ActivatedRoute,
     private contactViewService: ContactViewService,
@@ -26,10 +25,19 @@ export class ContactViewUpdateComponent implements OnInit {
 
   }
 
+  editContact(): void {
+    this.contactViewService.updateContact(this.contact)
+      .subscribe(() => this.goBack());
+  }
+
+
+
+
   getContact(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.contactViewService.getContact(id).subscribe(contact => this.contact = contact);
   }
+
 
   goBack(): void {
     this.location.back();
