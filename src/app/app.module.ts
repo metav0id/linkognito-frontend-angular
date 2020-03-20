@@ -13,8 +13,10 @@ import { RoutingComponent } from './routing.component';
 import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {QrGenerateComponent} from './qr-generate/qr-generate.component';
+import {QRCodeModule} from 'angularx-qrcode';
 
 
 @NgModule({
@@ -28,18 +30,19 @@ import { RegisterComponent } from './register/register.component';
     ContactViewUpdateComponent,
     NotificationsComponent,
     RoutingComponent,
+    QrGenerateComponent,
     RegisterComponent,
-
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        HttpClientInMemoryWebApiModule.forRoot(
-          InMemoryDataService, {dataEncapsulation: false}
-        )
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    ),
+    QRCodeModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
