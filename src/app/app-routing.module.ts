@@ -3,14 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactViewComponent} from "./contact-view/contact-view.component";
 import { ChatWindowComponent} from "./chat-window/chat-window.component";
 import { ContactViewUpdateComponent} from "./contact-view-update/contact-view-update.component";
-<<<<<<< HEAD
-import {QrGenerateComponent} from './qr-generate/qr-generate.component';
-=======
-import {LoginComponent} from "./login/login.component";
-import {RegisterComponent} from "./register/register.component";
-import {LandingpageComponent} from "./landingpage/landingpage.component";
->>>>>>> 9196f525d823bdb7efccb610c889fc815f7bea93
 
+import {QrGenerateComponent} from './qr-generate/qr-generate.component';
+import {LandingpageComponent} from './landingpage/landingpage.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
 
 /**
  * Routes-file contains all subpages of user-module.
