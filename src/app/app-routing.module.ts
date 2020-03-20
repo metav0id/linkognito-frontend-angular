@@ -4,6 +4,7 @@ import { ContactViewComponent} from "./contact-view/contact-view.component";
 import { ChatWindowComponent} from "./chat-window/chat-window.component";
 import { LandingpageComponent} from "./landingpage/landingpage.component";
 import { ContactViewUpdateComponent} from "./contact-view-update/contact-view-update.component";
+import {QrGenerateComponent} from './qr-generate/qr-generate.component';
 
 
 /**
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'landingpage', component: LandingpageComponent},
   { path: 'contacts', component: ContactViewComponent},
   { path: 'chat/:id', component: ChatWindowComponent},
+  { path: 'createQRCode', component: QrGenerateComponent},
   { path: 'update/:id', component: ContactViewUpdateComponent},
 
 ];
