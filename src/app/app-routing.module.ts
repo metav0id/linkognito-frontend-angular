@@ -8,6 +8,11 @@ import {RegisterComponent} from "./register/register.component";
 import {LandingpageComponent} from "./landingpage/landingpage.component";
 
 
+/**
+ * Routes-file contains all subpages of user-module.
+ * First entry (redirectTo) specifies starting-page
+ */
+
 const routes: Routes = [
   { path: '', component: LandingpageComponent},
   { path: 'login', component: LoginComponent},
