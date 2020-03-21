@@ -1,0 +1,19 @@
+//package zum qr-scanner
+npm i @zxing/ngx-scanner
+
+//progressive web app zur mobilen Benutzung
+ng add @angular/pwa
+
+//deploy app mit Firebase: Schritte
+0. Console zum Projekt-verzeichnis fahren
+1. dist file generieren:> ng build --prod
+2. Anmelden bei Firebase und projekt für die App anlegen: https://firebase.google.com/
+3. Falls noch nicht getan, firebase ein mal installieren:> npm install -g firebase-tools
+4. log in zum firebase-konto:> firebase login
+5. Firebase-Einstellungen beim Projekt iniitialisieren:> firebase init
+6. Firebase CLI features? Hosting auswählen
+7. Public directory? dist/GraduationProjectUserNg
+8. Configure as single-page app? yes
+9. Overwrite index.html: No
+10. app zur firebase ausfahren:> firebase deploy
+11. live-url starten:> firebase open hosting:site
