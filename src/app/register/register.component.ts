@@ -18,6 +18,8 @@ export class RegisterComponent implements OnInit {
 
 
   addNewUSer() {
-    this.registerService.addNewUser(this.newUser).subscribe(() => this.ngOnInit());
+    if(this.newUser.email != "" && this.newUser.password.length >= 8){
+      this.registerService.addNewUser(this.newUser).subscribe();
+    }
   }
 }
