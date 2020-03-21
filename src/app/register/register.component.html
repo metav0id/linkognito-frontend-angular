@@ -26,11 +26,11 @@
           <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
         </div>
         <div class="col-md-12 text-center mb-3">
-          <button type="submit" class=" btn btn-block" (click) = addNewUSer()>Get Started</button>
+          <button type="submit" class=" btn btn-block" (click) = addNewUSer() [routerLink]="['/login']">Get Started</button>
         </div>
         <div class="col-md-12 ">
           <div class="form-group">
-            <p class="text-center"><a href="#"routerLink="/login">Already have an account?</a></p>
+            <p class="text-center"><a href="#" routerLink="/login">Already have an account?</a></p>
           </div>
         </div>
       </div>
