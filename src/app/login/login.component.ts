@@ -10,7 +10,8 @@ import {Observable} from "rxjs";
 })
 export class LoginComponent implements OnInit {
 
-  user: User;
+  user: User = {name: "", email : "", password: ""};
+  returnObject: Object;
   getUserObservable: Observable<User>;
 
 
@@ -20,14 +21,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.loginService.login(this.user);
-    this.getUserObservable = this.loginService.getUserObservable;
-    this.getUserObservable.subscribe(
-      (result) => {this.user = result}
-    )
+    this.loginService.find(this.user).subscribe((result) => {console.log(result)});
 
-    if(this.user){
-      //TODO: Show page
+    if(this.returnObject){
+      console.log("something")
     } else {
       //TODO: WARNING
     }
