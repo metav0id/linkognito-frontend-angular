@@ -6,6 +6,7 @@ import { ContactViewUpdateComponent} from "./contact-view-update/contact-view-up
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {LandingpageComponent} from "./landingpage/landingpage.component";
+import {LoginSuccessComponent} from "./login-success/login-success.component";
 
 
 /**
@@ -16,6 +17,7 @@ import {LandingpageComponent} from "./landingpage/landingpage.component";
 const routes: Routes = [
   { path: '', component: LandingpageComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'home', component: LoginSuccessComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'contacts', component: ContactViewComponent},
   { path: 'chat/:id', component: ChatWindowComponent},

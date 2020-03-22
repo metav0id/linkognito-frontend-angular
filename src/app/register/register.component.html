@@ -18,7 +18,7 @@
                  [(ngModel)]="newUser.email" #email = "ngModel" required>
           <!--          Validierung-->
           <div *ngIf="email.invalid" class="alert-danger alert">
-            E-mail ist required!
+            *required
           </div>
 
         </div>
@@ -29,7 +29,7 @@
           <!--          Validierung-->
           <div *ngIf="pwd.invalid" class="alert-danger alert">
             <div *ngIf="pwd.errors.required">
-              Password is required.
+              *required
             </div>
             <div *ngIf="pwd.errors.minlength">
               Password must be at least 8 characters long.

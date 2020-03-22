@@ -15,6 +15,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginSuccessComponent } from './login-success/login-success.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
     NotificationsComponent,
     RoutingComponent,
     RegisterComponent,
+    LoginSuccessComponent,
 
   ],
     imports: [
@@ -36,9 +38,9 @@ import { RegisterComponent } from './register/register.component';
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        HttpClientInMemoryWebApiModule.forRoot(
-          InMemoryDataService, {dataEncapsulation: false}
-        )
+        // HttpClientInMemoryWebApiModule.forRoot(
+        //   InMemoryDataService, {dataEncapsulation: false}
+        // )
     ],
   providers: [],
   bootstrap: [AppComponent]
