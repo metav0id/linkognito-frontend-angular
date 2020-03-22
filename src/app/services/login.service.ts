@@ -8,12 +8,14 @@ import {Observable} from "rxjs";
 })
 export class LoginService implements OnInit{
 
+  loggedUser : User;
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
   }
 
-  find(user: User) {
-    return this.http.post('http://localhost:8080/login', user);
+  login(user: User): Observable<User>{
+   return this.http.post<User>('http://localhost:8080/login', user)
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../interfaces/user";
 import {LoginService} from "../services/login.service";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,23 +11,26 @@ import {Observable} from "rxjs";
 })
 export class LoginComponent implements OnInit {
 
-  user: User = {name: "", email : "", password: ""};
-  returnObject: Object;
-  getUserObservable: Observable<User>;
+  user: User = {email : "", password: ""};
 
-
-  constructor(private loginService: LoginService) { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    this.loginService.find(this.user).subscribe((result) => {console.log(result)});
-
-    if(this.returnObject){
-      console.log("something")
-    } else {
-      //TODO: WARNING
-    }
+    this.loginService.login(this.user).subscribe(
+      (returnUser) => {
+        if(returnUser != null){
+          this.loginService.loggedUser = returnUser;
+          this.router.navigate(['/home']);
+        } else {
+          this.router.navigate(['/login'])
+        }
+      }
+    );
   }
 }

@@ -13,6 +13,7 @@ import { RoutingComponent } from './routing.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
+import { LoginSuccessComponent } from './login-success/login-success.component';
 import {QrGenerateComponent} from './qr-generate/qr-generate.component';
 import {QRCodeModule} from 'angularx-qrcode';
 
@@ -30,6 +31,8 @@ import {QRCodeModule} from 'angularx-qrcode';
     RoutingComponent,
     QrGenerateComponent,
     RegisterComponent,
+    LoginSuccessComponent,
+
   ],
   imports: [
     BrowserModule,
