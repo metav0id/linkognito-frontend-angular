@@ -33,10 +33,13 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/login']);
           } else {
             this.failRegister = true;
-            this.newUser = {name: "", password: "", email: "", age : 0, geschecht: ""};
           }
         }
       );
     }
+  }
+
+  formClick() {
+    this.failRegister = false;
   }
 }
