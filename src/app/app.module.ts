@@ -16,6 +16,12 @@ import {RegisterComponent} from './register/register.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import {QrGenerateComponent} from './qr-generate/qr-generate.component';
 import {QRCodeModule} from 'angularx-qrcode';
+import { ScannerComponent } from './scanner/scanner.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
+import { ZXingScannerModule } from "@zxing/ngx-scanner";
+
 
 
 @NgModule({
@@ -31,6 +37,7 @@ import {QRCodeModule} from 'angularx-qrcode';
     RoutingComponent,
     QrGenerateComponent,
     RegisterComponent,
+    ScannerComponent,
     LoginSuccessComponent,
 
   ],
@@ -39,7 +46,9 @@ import {QRCodeModule} from 'angularx-qrcode';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    QRCodeModule
+    QRCodeModule,
+    ZXingScannerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
