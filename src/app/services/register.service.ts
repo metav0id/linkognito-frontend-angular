@@ -7,7 +7,7 @@ import {User} from "../interfaces/user";
 })
 export class RegisterService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addNewUser(newUser: User){
     return this.http.post('http://localhost:8080/registration', newUser);
