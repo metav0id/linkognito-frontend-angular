@@ -1,13 +1,18 @@
+<div class="container qrcode">
+  <div class="row justify-content-center">
+    <button class="btn col-3 mx-3" routerLink="/createQRCode/">Show QR-Code</button>
+    <button class="btn col-3 mx-3" routerLink="/scanQRCode/">Scan QR-Code</button>
+  </div>
+</div>
 
 <div class="container">
-<h1>Contacts:</h1>
-
-  <table class="table">
+  <p>Contacts:</p>
+  <table class="table contactlist">
     <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col" >Contact (tap to chat)</th>
-      <th scope="col" > </th>
+      <th scope="col">Name (tap to chat)</th>
+      <th scope="col"></th>
 
     </tr>
     </thead>
@@ -15,27 +20,24 @@
     <tr *ngFor="let contact of contacts; index as i">
       <th scope="row">{{ i + 1 }}
       </th>
-       <td routerLink="/chat/{{contact.id}}">
+      <td routerLink="/chat/{{contact.id}}">
         <span class="badge">{{contact.name}}</span>
       </td>
       <td>
-        <button routerLink="/update/{{contact.id}}" class="badge">edit</button>
+        <button routerLink="/update/{{contact.id}}" class="btn badge">edit</button>
       </td>
       <td>
-        <button (click)="deleteContact(contact)" class="badge">delete</button>
+        <button (click)="deleteContact(contact)" class="btn badge">delete</button>
+
       </td>
 
-      </tr>
+    </tr>
     </tbody>
   </table>
 
 
 </div>
 
-<div class="container">
-  <button class="btn btn-primary" routerLink="/createQRCode/">show QR-Code</button>
-  <button class="btn btn-primary" routerLink="/scanQRCode/">scan QR-Code</button>
-</div>
 
 
 

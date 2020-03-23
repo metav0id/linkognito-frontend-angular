@@ -12,3 +12,13 @@
 .orange {
   background-color: #ed6a5a;
 }
+
+.contactlist {
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.qrcode {
+  max-height: 20vh;
+  margin: auto;
+}

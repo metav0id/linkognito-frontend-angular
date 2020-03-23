@@ -17,4 +17,7 @@ export class LoginSuccessComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout() {
+    this.loginService.loggedUser = null;
+  }
 }
