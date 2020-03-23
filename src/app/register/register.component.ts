@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../interfaces/user";
 import {RegisterService} from "../services/register.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -10,8 +11,9 @@ import {RegisterService} from "../services/register.service";
 export class RegisterComponent implements OnInit {
 
   newUser : User = {name: "", password: "", email: "", age : 0, geschecht: ""};
+  failRegister = false;
 
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService,  private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,11 +23,18 @@ export class RegisterComponent implements OnInit {
     if(this.newUser.email != "" && this.newUser.password.length >= 8){
       this.registerService.addNewUser(this.newUser).subscribe(
         (result) => {
-          this.registerService.sendNewUserToService(result).subscribe(
-            (result) => {
-              console.log(result.code);
-            }
-          );
+          if(result != null){
+            console.log(result.id)
+            this.registerService.sendNewUserToService(result).subscribe(
+              (result) => {
+                console.log(result.code);
+              }
+            );
+            this.router.navigate(['/login']);
+          } else {
+            this.failRegister = true;
+            this.newUser = {name: "", password: "", email: "", age : 0, geschecht: ""};
+          }
         }
       );
     }
