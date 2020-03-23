@@ -11,12 +11,12 @@ import {ChatApiServiceService} from "../services/chat-api-service.service";
   styleUrls: ['./chat-window.component.css']
 })
 export class ChatWindowComponent implements OnInit {
-  private readonly UPDATE_CYCLE_IN_MILLISECONDS : number = 5000;
+  private readonly UPDATE_CYCLE_IN_MILLISECONDS: number = 5000;
 
   messagesList: ChatMessage[] = [];
-  newMessage: ChatMessage = { name: '', id:0, addressId: 0, text: '', time: '' };
+  newMessage: ChatMessage = { name: '', id: 0, addressId: 0, text: '', time: '' };
 
-  myUserID : number = 10;
+  myUserID: number = 10;
 
   constructor(private httpClient: HttpClient, private apiService: ChatApiServiceService) { }
 

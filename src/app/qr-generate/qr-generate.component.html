@@ -1,9 +1,18 @@
-<qrcode [qrdata]="qrdata" [size]="256" [level]="'M'"></qrcode>
-
-<br>
-
-<div class="text">
-  <label>
-    Qr-Stream: <input [(ngModel)]="qrdata" placeholder="Qr-Stream">
-  </label>
+<div class="container fullHeight-center">
+  <p>QR-Code</p>
+  <div class="row justify-content-center">
+    <qrcode [qrdata]="qrdata" [size]="256" [level]="'M'"></qrcode>
+  </div>
+  <br>
+  <p>QR-Stream</p>
+  <div class="row justify-content-center">
+    <label>
+      <input type="text"
+            class="form-control"
+             [(ngModel)]="qrdata"
+             style="width: 300px"
+             placeholder="input Qr-Stream"
+      >
+    </label>
+  </div>
 </div>

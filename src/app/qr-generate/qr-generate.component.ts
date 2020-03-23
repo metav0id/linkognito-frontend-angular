@@ -11,7 +11,7 @@ export class QrGenerateComponent {
 
   constructor() {
     console.log('QrGenerateComponent running');
-    this.qrdata = 'Qr-Stream-Id-wie-auch-immer';
+    this.qrdata = 'Qr-Stream example';
   }
 
 }

@@ -63,7 +63,7 @@ export class ContactViewService {
 
   /** DELETE-Method for single contact */
 
-  deleteContact (contact: ContactInterface): Observable<ContactInterface> {
+  deleteContact(contact: ContactInterface): Observable<ContactInterface> {
     const id = typeof contact === 'number' ? contact : contact.id;
     const url = `${this.contactsUrl}/${id}`;
 
@@ -82,8 +82,8 @@ export class ContactViewService {
 
   /** Error-handling for db-access */
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error : any): Observable<T> => {
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
       console.error(error);
       this.log(`${operation} failed: ${error.message}`);
       return of(result as T);
