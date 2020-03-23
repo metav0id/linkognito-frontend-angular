@@ -1,1 +1,11 @@
-<p>{{gruessen}}</p>
+<div class="container fullHeight-center m-auto">
+  <p class="text-center">{{gruessen}}</p>
+  <app-contact-view></app-contact-view>
+
+  <div class="row my-3">
+    <div class="col-3 mx-auto">
+      <a class="btn btn-block" (click)="logout()" routerLink="/">Logout</a>
+    </div>
+  </div>
+
+</div>
