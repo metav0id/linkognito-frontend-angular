@@ -25,8 +25,7 @@ const routes: Routes = [
   { path: 'chat/:id', component: ChatWindowComponent},
   { path: 'createQRCode', component: QrGenerateComponent},
   { path: 'scanQRCode', component: ScannerComponent},
-  { path: 'update/:id', component: ContactViewUpdateComponent},
-
+  { path: 'update/:id', component: ContactViewUpdateComponent}
 ];
 
 @NgModule({

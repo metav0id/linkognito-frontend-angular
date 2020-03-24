@@ -9,7 +9,7 @@ import {CodeDto} from '../interfaces/code-dto';
 })
 export class QrGenerateService {
 
-  private urlService = 'https://linkogservices.herokuapp.com/user/createconnection';
+  private urlService = 'https://linkogservices.herokuapp.com/user/code';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -17,7 +17,7 @@ export class QrGenerateService {
 
   constructor(private http: HttpClient) {}
 
-  sendUserIdToService(idDto : IdDto) {
+  sendUserIdToService(idDto: IdDto) {
     return this.http.post<CodeDto>(this.urlService, idDto);
   }
 

@@ -38,8 +38,7 @@ import { ZXingScannerModule } from "@zxing/ngx-scanner";
     QrGenerateComponent,
     RegisterComponent,
     ScannerComponent,
-    LoginSuccessComponent,
-
+    LoginSuccessComponent
   ],
   imports: [
     BrowserModule,
