@@ -5,6 +5,8 @@ import {from, interval, observable, Observable} from "rxjs";
 import {startWith, switchMap} from "rxjs/operators";
 import {ChatApiServiceService} from "../services/chat-api-service.service";
 import { ContactViewService} from "../services/contact-view.service";
+import {ActivatedRoute} from "@angular/router";
+import {ContactInterface} from "../interfaces/contact.interface";
 
 @Component({
   selector: 'app-chat-window',
@@ -17,9 +19,10 @@ export class ChatWindowComponent implements OnInit {
   newMessage: ChatMessage = { name: '', id: 0, addressId: 0, text: '', time: '' };
 
   myUserID: number = 10;
+  addressId: number;
+  contactObject: ContactInterface;
 
-
-  constructor(private httpClient: HttpClient, private apiService: ChatApiServiceService, private contactViewService: ContactViewService) { }
+  constructor(private httpClient: HttpClient, private apiService: ChatApiServiceService, private contactViewService: ContactViewService, private router: ActivatedRoute) { }
 
   //**on load all chat messages are called by REST API and
   //update cycle is started
@@ -28,6 +31,14 @@ export class ChatWindowComponent implements OnInit {
 
     this.apiService.loadMessages().subscribe(messages => this.messagesList = messages);
     this.checkForNewMessage();
+
+    this.addressId = +this.router.snapshot.paramMap.get('contact.addressId');
+    console.log(this.addressId);
+    this.contactViewService.getContact(this.addressId).subscribe(res => this.contactObject = res);
+    this.newMessage.id = this.contactObject.id;
+    this.newMessage.addressId = this.contactObject.addressId;
+    this.newMessage.name = this.contactObject.nickname;
+    console.log(this.newMessage)
   }
 
   //**Message will be sent to Service Module via REST-API

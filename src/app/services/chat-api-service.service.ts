@@ -40,7 +40,7 @@ export class ChatApiServiceService {
   //!**Is called by function checkForNewMessage() to call Server Api
   public getNewMessages(): Observable<ChatMessage[]>{
     //TODO implement getting user id and address id from contact list
-    let myUser = {id : 2};
+    let myUser = {id : 2, addressId: 10};
     return this.httpClient.post<ChatMessage[]>(this.URL_READ_NEW_MESSAGES, myUser);
   }
 
