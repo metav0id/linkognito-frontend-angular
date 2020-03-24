@@ -1,3 +1,3 @@
 export interface SuccessDto {
-  adressId: number
+  addressId: number
 }

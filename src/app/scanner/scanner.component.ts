@@ -39,7 +39,8 @@ export class ScannerComponent implements OnInit {
       this.newConnection.code = this.qrStream;
       this.qrScannerService.sendNewConnectionToService(this.newConnection).subscribe(
         (result) => {
-          console.log(result.adressId);
+          console.log(`result.addressId = ${result.addressId}`);
+          console.log(result.addressId);
         }
       );
     }
