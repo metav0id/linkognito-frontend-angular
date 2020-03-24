@@ -20,7 +20,7 @@
     <tr *ngFor="let contact of contacts; index as i">
       <th scope="row">{{ i + 1 }}
       </th>
-      <td routerLink="/chat/{{contact.id}}">
+      <td (click)="createArray(contact)" routerLink="/chat/{{contact.id}}">
         <span class="badge">{{contact.name}}</span>
       </td>
       <td>

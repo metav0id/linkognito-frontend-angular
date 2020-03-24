@@ -30,9 +30,6 @@ export class ContactViewUpdateComponent implements OnInit {
       .subscribe(() => this.goBack());
   }
 
-
-
-
   getContact(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.contactViewService.getContact(id).subscribe(contact => this.contact = contact);
