@@ -12,7 +12,7 @@ export class ScannerComponent implements OnInit {
   currentDevice: MediaDeviceInfo = null;
   hasPermission: boolean;
   qrStream: string;
-  newConnection: NewConnectionDto = {"userId":0 , "qrStream":"string"};
+  newConnection: NewConnectionDto = {"id":10 , "code":"string"};
 
 
   constructor(private qrScannerService: QrScannerService) { }
@@ -30,10 +30,10 @@ export class ScannerComponent implements OnInit {
 
   sendNewConnectionToService (){
     if (this.qrStream){
-      this.newConnection.qrStream = this.qrStream;
+      this.newConnection.code = this.qrStream;
       this.qrScannerService.sendNewConnectionToService(this.newConnection).subscribe(
         (result) => {
-          console.log(result);
+          console.log(result.adressId);
         }
       );
     }

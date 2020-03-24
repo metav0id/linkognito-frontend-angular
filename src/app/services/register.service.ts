@@ -16,6 +16,6 @@ export class RegisterService {
   }
 
   sendNewUserToService(idDto : IdDto) {
-    return this.http.post<CodeDto>('http://localhost:8080/user/registration', idDto);
+    return this.http.post<CodeDto>('https://linkogservices.herokuapp.com/user/registration', idDto);
   }
 }

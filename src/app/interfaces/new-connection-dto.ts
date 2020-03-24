@@ -1,4 +1,4 @@
 export interface NewConnectionDto {
-    userId: number;
-    qrStream: string;
+    id: number;
+    code: string;
 }
