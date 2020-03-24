@@ -32,8 +32,7 @@ export class ChatWindowComponent implements OnInit {
 
   //**Message will be sent to Service Module via REST-API
   sendMessage(){
-   //TODO implement REST API Call to send message to Service module
-    console.log(this.newMessage);
+    this.apiService.sendMessage(this.newMessage).subscribe(()=> console.log("Message sent from frontend"));
   }
 
   //ToDO Differentiate by clientID

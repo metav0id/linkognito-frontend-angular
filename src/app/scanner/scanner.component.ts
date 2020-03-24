@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { QrScannerService } from '../services/qr-scanner.service';
+import { NewConnectionDto } from '../interfaces/new-connection-dto';
+import {LoginService} from '../services/login.service';
+import {log} from 'util';
 
 @Component({
   selector: 'app-scanner',
@@ -8,12 +12,16 @@ import { Component, OnInit } from '@angular/core';
 export class ScannerComponent implements OnInit {
 
   currentDevice: MediaDeviceInfo = null;
-  qrStream: string;
   hasPermission: boolean;
+  qrStream: string;
+  newConnection: NewConnectionDto = {"id":119 , "code":"string"};
 
+  // constructor(private qrScannerService: QrScannerService) {
+  // }
 
-
-  constructor() { }
+  constructor(private qrScannerService: QrScannerService, private loginService: LoginService) {
+    this.newConnection.id = loginService.loggedUser.id;
+  }
 
   ngOnInit(): void {
   }
@@ -26,4 +34,14 @@ export class ScannerComponent implements OnInit {
     this.hasPermission = has;
   }
 
+  sendNewConnectionToService (){
+    if (this.qrStream){
+      this.newConnection.code = this.qrStream;
+      this.qrScannerService.sendNewConnectionToService(this.newConnection).subscribe(
+        (result) => {
+          console.log(result.adressId);
+        }
+      );
+    }
+  }
 }

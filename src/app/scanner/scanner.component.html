@@ -11,9 +11,14 @@
   </div>
 </div>
 
-<!-- Displays message on the screen if guest is valid or not -->
-<div class="guest">
-  <div class="ui success message">
-    <p>{{qrStream}}</p>
+<!-- Displays message on the screen if guest is valid -->
+<div *ngIf="qrStream">
+  <div class="guest"  >
+    <div class="ui success message">
+      <p>{{qrStream}}</p>
+      <button type="submit" class=" btn btn-block" (click) = sendNewConnectionToService() routerLink ="/scanQRCode">
+        Valid Qr-Stream
+      </button>
+    </div>
   </div>
 </div>
