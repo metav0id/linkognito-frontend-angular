@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'home', component: LoginSuccessComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'contacts', component: ContactViewComponent},
-  { path: 'chat/:id', component: ChatWindowComponent},
+  { path: 'chat/:addressId', component: ChatWindowComponent},
   { path: 'createQRCode', component: QrGenerateComponent},
   { path: 'scanQRCode', component: ScannerComponent},
   { path: 'successScann', component: SuccessScannComponent},

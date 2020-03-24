@@ -6,6 +6,12 @@
       <input [(ngModel)]="contact.name" placeholder="name" />
     </label>
   </div>
+  <h2 class="orange"> change your contact-specific nickname</h2>
+  <div>
+    <label>nickname:
+      <input [(ngModel)]="contact.nickname" placeholder="name" />
+    </label>
+  </div>
   <div *ngIf="contact.active == true">
     <label>
       contact is active:

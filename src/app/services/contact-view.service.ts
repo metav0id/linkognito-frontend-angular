@@ -12,7 +12,10 @@ import { catchError, map, tap } from "rxjs/operators";
 })
 export class ContactViewService {
 
-  private contactsUrl = 'api/contacts';
+  private getContactsUrl = 'http://localhost:8080/readAllContacts';
+  private getSingleContactUrl = 'http://localhost:8080/readContact';
+  private updateContactUrl = 'http://localhost:8080/updateContact';
+  private deleteContactUrl = 'http://localhost:8080/deleteContact';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -28,44 +31,46 @@ export class ContactViewService {
     this.notificationsService.add(`${notification}`);
   }
 
-  /** GET-Method for contact-list */
+  /** GET-Method for contact-list*/
 
   getContacts(): Observable<ContactInterface[]> {
 
 
-    return this.http.get<ContactInterface[]>(this.contactsUrl)
+    return this.http.get<ContactInterface[]>(this.getContactsUrl)
       .pipe(
         tap(_ => this.log('loaded contacts from database')),
         catchError(this.handleError<ContactInterface[]>('getContacts()', []))
       );
   }
 
+  //ToDo: Implement GET-method for external services db which will
+  // be executed whenever app is started.
 
 
-  /** GET-Method for single contact */
+  /** GET-Method for single contact*/
 
   getContact(id:number): Observable<ContactInterface>{
-    const url = `${this.contactsUrl}/${id}`;
+    const url = `${this.getSingleContactUrl}/${id}`;
     return this.http.get<ContactInterface>(url).pipe(
       tap(_ => this.log(`loaded contact id=${id} details`)),
       catchError(this.handleError<ContactInterface>(`getContact id=${id}`))
     );
   }
 
-  /** PUT-Method for single contact */
+  /** PUT-Method for single contact*/
 
   updateContact (contact: ContactInterface): Observable<any> {
-    return this.http.put(this.contactsUrl, contact, this.httpOptions).pipe(
+    return this.http.put(this.updateContactUrl, contact, this.httpOptions).pipe(
       tap(_ => this.log(`updated contact id=${contact.id}`)),
       catchError(this.handleError<any>('updateContact'))
     );
   }
 
-  /** DELETE-Method for single contact */
+  /** DELETE-Method for single contact*/
 
   deleteContact(contact: ContactInterface): Observable<ContactInterface> {
     const id = typeof contact === 'number' ? contact : contact.id;
-    const url = `${this.contactsUrl}/${id}`;
+    const url = `${this.deleteContactUrl}/${id}`;
 
    return this.http.delete<ContactInterface>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted contact id=${id}`)),

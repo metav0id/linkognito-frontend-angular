@@ -15,6 +15,11 @@ import { MockContacts } from "./MockContacts";
 export class ContactViewComponent implements OnInit {
 
   contacts: ContactInterface[];
+  chatContact : string [];
+
+  //Test
+  id: number = 5;
+
 
   getContacts(): void {
     this.contacts = MockContacts;
@@ -22,8 +27,8 @@ export class ContactViewComponent implements OnInit {
   }
 
   deleteContact(contact: ContactInterface): void {
-    // this.contacts = this.contacts.filter(c => c !== contact);
-    // this.contactViewService.deleteContact(contact).subscribe();
+    this.contacts = this.contacts.filter(c => c !== contact);
+    this.contactViewService.deleteContact(contact).subscribe();
   }
 
   constructor(private contactViewService: ContactViewService, private notificationsService: NotificationsService) { }
@@ -32,6 +37,10 @@ export class ContactViewComponent implements OnInit {
     this.getContacts();
   }
 
-
+  createArray(contact) {
+    this.chatContact[0] = contact.id;
+    this.chatContact[1] = contact.addressId;
+    this.chatContact[2] = contact.name;
+  }
 
 }
