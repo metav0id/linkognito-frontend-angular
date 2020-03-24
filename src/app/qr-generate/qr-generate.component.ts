@@ -16,14 +16,15 @@ export class QrGenerateComponent {
 
   constructor(private qrGenerateService: QrGenerateService) {
     console.log('QrGenerateComponent running');
-    this.qrdata = 'f9g5b316-128c-4865-b606-2de686239054U';
+    this.qrdata = 'no code from server';
     this.updateQrStream();
   }
 
   updateQrStream(): void {
+    console.log(`this.userIdDto.id = ${this.userIdDto.id}`);
     this.qrGenerateService.sendUserIdToService(this.userIdDto).subscribe(
       (result) => {
-        console.log(result.code);
+        console.log(`result.code = ${result.code}`);
         this.qrdata = result.code;
       }
     );

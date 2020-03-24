@@ -10,6 +10,7 @@ import {QrGenerateComponent} from './qr-generate/qr-generate.component';
 import { ScannerComponent} from './scanner/scanner.component';
 
 import {LoginSuccessComponent} from "./login-success/login-success.component";
+import {SuccessScannComponent} from './success-scann/success-scann.component';
 
 /**
  * Routes-file contains all subpages of user-module.
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'chat/:id', component: ChatWindowComponent},
   { path: 'createQRCode', component: QrGenerateComponent},
   { path: 'scanQRCode', component: ScannerComponent},
+  { path: 'successScann', component: SuccessScannComponent},
   { path: 'update/:id', component: ContactViewUpdateComponent},
 
 ];

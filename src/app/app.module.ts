@@ -21,6 +21,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { ZXingScannerModule } from "@zxing/ngx-scanner";
+import { SuccessScannComponent } from './success-scann/success-scann.component';
 
 
 
@@ -39,6 +40,7 @@ import { ZXingScannerModule } from "@zxing/ngx-scanner";
     RegisterComponent,
     ScannerComponent,
     LoginSuccessComponent,
+    SuccessScannComponent,
 
   ],
   imports: [

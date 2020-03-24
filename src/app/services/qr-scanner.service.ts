@@ -13,11 +13,13 @@ export class QrScannerService {
   };
 
   private urlService = 'https://linkogservices.herokuapp.com/user/createconnection';
+  qrStream: string = null;
 
 
   constructor(private http: HttpClient) { }
 
   sendNewConnectionToService(newConnectionDTO: NewConnectionDto) {
+    this.qrStream = newConnectionDTO.code;
     return this.http.post<SuccessDto>(this.urlService, newConnectionDTO);
   }
 
