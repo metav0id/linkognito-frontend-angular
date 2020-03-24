@@ -22,5 +22,4 @@ export class QrScannerService {
     this.qrStream = newConnectionDTO.code;
     return this.http.post<SuccessDto>(this.urlService, newConnectionDTO);
   }
-
 }
