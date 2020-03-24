@@ -32,13 +32,17 @@ export class ChatWindowComponent implements OnInit {
     this.apiService.loadMessages().subscribe(messages => this.messagesList = messages);
     this.checkForNewMessage();
 
-    this.addressId = +this.router.snapshot.paramMap.get('contact.addressId');
-    console.log(this.addressId);
+    this.router.paramMap.subscribe(params => {
+      this.addressId = Number(params.get('addressId'));
+    })
+
+    console.log("AddressId = " + this.addressId);
+
     this.contactViewService.getContact(this.addressId).subscribe(res => this.contactObject = res);
     this.newMessage.id = this.contactObject.id;
     this.newMessage.addressId = this.contactObject.addressId;
     this.newMessage.name = this.contactObject.nickname;
-    console.log(this.newMessage)
+    console.log(this.newMessage);
   }
 
   //**Message will be sent to Service Module via REST-API

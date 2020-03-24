@@ -17,6 +17,9 @@ export class ContactViewComponent implements OnInit {
   contacts: ContactInterface[];
   chatContact : string [];
 
+  //Test
+  id: number = 5;
+
 
   getContacts(): void {
     this.contacts = MockContacts;
