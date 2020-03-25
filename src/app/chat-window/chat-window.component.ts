@@ -47,6 +47,12 @@ export class ChatWindowComponent implements OnInit {
 
   //**Message will be sent to Service Module via REST-API
   sendMessage(){
+
+    let today = new Date();
+    let timestamp = today.getDay()+"."+today.getMonth()+"."+today.getFullYear()+" "+today.getHours()+":"+today.getMinutes();
+    console.log(timestamp);
+    this.newMessage.time = timestamp;
+    this.messagesList.push(this.newMessage);
     this.apiService.sendMessage(this.newMessage).subscribe(()=> console.log("Message sent from frontend"));
   }
 
