@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ChatMessage} from "../interfaces/chat-message";
 import {HttpClient} from "@angular/common/http";
 import {from, interval, observable, Observable} from "rxjs";
@@ -8,12 +8,14 @@ import { ContactViewService} from "../services/contact-view.service";
 import {ActivatedRoute} from "@angular/router";
 import {ContactInterface} from "../interfaces/contact.interface";
 
+
 @Component({
   selector: 'app-chat-window',
   templateUrl: './chat-window.component.html',
   styleUrls: ['./chat-window.component.css']
 })
-export class ChatWindowComponent implements OnInit {
+export class ChatWindowComponent implements OnInit, OnDestroy {
+
   private readonly UPDATE_CYCLE_IN_MILLISECONDS: number = 5000;
   messagesList: ChatMessage[] = [];
   newMessage: ChatMessage = { name: '', id: 0, addressId: 0, text: '', time: '' };
@@ -21,6 +23,9 @@ export class ChatWindowComponent implements OnInit {
   myUserID: number = 10;
   addressId: number;
   contactObject: ContactInterface;
+
+  //TEST 25.3.
+  subscription;
 
   constructor(private httpClient: HttpClient, private apiService: ChatApiServiceService, private contactViewService: ContactViewService, private router: ActivatedRoute) { }
 
@@ -45,9 +50,14 @@ export class ChatWindowComponent implements OnInit {
     console.log(this.newMessage);
   }
 
+  //**when leaving chat all is unsubscribed
+  ngOnDestroy(): void {
+    console.log("Unsubscribed from chatroom");
+    this.subscription.unsubscribe();
+  }
+
   //**Message will be sent to Service Module via REST-API
   sendMessage(){
-
     let today = new Date();
     let timestamp = today.getDay()+"."+today.getMonth()+"."+today.getFullYear()+" "+today.getHours()+":"+today.getMinutes();
     console.log(timestamp);
@@ -59,11 +69,11 @@ export class ChatWindowComponent implements OnInit {
   //ToDO Differentiate by clientID
   //**Receive single messages from Server by checking in interval
   checkForNewMessage(){
-    interval(this.UPDATE_CYCLE_IN_MILLISECONDS).pipe(
+    this.subscription = interval(this.UPDATE_CYCLE_IN_MILLISECONDS).pipe(
       switchMap(() => this.apiService.getNewMessages())
     ).subscribe(messages => {
+      console.log(messages);
       this.messagesList = this.messagesList.concat(messages);
     })
   }
-
 }
