@@ -5,6 +5,7 @@ import {NotificationsService} from "../services/notifications.service";
 
 
 import { MockContacts } from "./MockContacts";
+import {QrScannerService} from '../services/qr-scanner.service';
 
 
 @Component({
