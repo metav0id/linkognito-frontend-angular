@@ -19,9 +19,10 @@ export class ChatApiServiceService {
   }
 
 
+
   //TODO need to get current userID by session
   //private readonly myUserID : number = 10;
-  private newMessage: ChatMessage = {name: '', id: 0, addressId: 0, text: '', time: ''};
+  // private newMessage: ChatMessage = {name: '', id: 0, addressId: 0, text: '', time: ''};
 
   constructor(private httpClient: HttpClient) {
   }
@@ -30,26 +31,27 @@ export class ChatApiServiceService {
   }
 
   //!**All current messages of conversation will be loaded from Service Module via REST-API
-  loadMessages(): Observable<ChatMessage[]> {
+  loadMessages(newRequest: ChatMessage): Observable<ChatMessage[]> {
     console.log("Loading messages from Server...");
     //TODO implement getting user id and address id from contact list
-    let myUser = {id : 2, addressId: 10};
-    return this.httpClient.post<ChatMessage[]>(this.URL_READ_ALL_MESSAGES, myUser);
+    // let myUser = {id : 2, addressId: 10};
+    return this.httpClient.post<ChatMessage[]>(this.URL_READ_ALL_MESSAGES, newRequest);
   }
 
   //!**Is called by function checkForNewMessage() to call Server Api
-  public getNewMessages(): Observable<ChatMessage[]>{
+  public getNewMessages(newRequest: ChatMessage): Observable<ChatMessage[]>{
     //TODO implement getting user id and address id from contact list
-    let myUser = {id : 2, addressId: 10};
-    return this.httpClient.post<ChatMessage[]>(this.URL_READ_NEW_MESSAGES, myUser);
+    // let myUser = {id : 2, addressId: 10};
+    console.log(newRequest.addressId);
+    return this.httpClient.post<ChatMessage[]>(this.URL_READ_NEW_MESSAGES, newRequest);
   }
 
   //!**Message will be sent to Service Module via REST-API
   public sendMessage(newChatMessage : ChatMessage): Observable<any>{
     //TODO implement getting user id and address id from contact list
-    newChatMessage.id = 10;
-    newChatMessage.addressId = 5;
-    newChatMessage.name = "Enrico"
+    // newChatMessage.id = 10;
+    // newChatMessage.addressId = 5;
+    // newChatMessage.name = "Enrico";
     console.log(newChatMessage);
     console.log(this.URL_SEND_NEW_MESSAGE);
     return this.httpClient.post(this.URL_SEND_NEW_MESSAGE,newChatMessage, this.httpOptions);

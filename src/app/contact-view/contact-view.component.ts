@@ -38,10 +38,10 @@ export class ContactViewComponent implements OnInit {
     this.getContacts();
   }
 
-  createArray(contact) {
-    this.chatContact[0] = contact.id;
-    this.chatContact[1] = contact.addressId;
-    this.chatContact[2] = contact.name;
-  }
+  // createArray(contact) {
+  //   this.chatContact[0] = contact.id;
+  //   this.chatContact[1] = contact.addressId;
+  //   this.chatContact[2] = contact.name;
+  // }
 
 }

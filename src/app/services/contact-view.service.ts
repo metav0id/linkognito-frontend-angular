@@ -13,7 +13,7 @@ import { catchError, map, tap } from "rxjs/operators";
 export class ContactViewService {
 
   private getContactsUrl = 'http://localhost:8080/readAllContacts';
-  private getSingleContactUrl = 'http://localhost:8080/readContact';
+  private getSingleContactUrl = 'http://localhost:8080/readContact/?id=';
   private updateContactUrl = 'http://localhost:8080/updateContact';
   private deleteContactUrl = 'http://localhost:8080/deleteContact';
 
@@ -50,7 +50,7 @@ export class ContactViewService {
   /** GET-Method for single contact*/
 
   getContact(id:number): Observable<ContactInterface>{
-    const url = `${this.getSingleContactUrl}/${id}`;
+    const url = `${this.getSingleContactUrl}${id}`;
     return this.http.get<ContactInterface>(url).pipe(
       tap(_ => this.log(`loaded contact id=${id} details`)),
       catchError(this.handleError<ContactInterface>(`getContact id=${id}`))
