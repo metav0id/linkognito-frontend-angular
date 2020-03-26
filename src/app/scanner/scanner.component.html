@@ -11,11 +11,23 @@
   </div>
 </div>
 
-<!-- Displays message on the screen if guest is valid -->
-<div *ngIf="qrStream">
-  <div class="guest"  >
-    <div class="ui success message">
-      <p>{{qrStream}}</p>
+
+
+<div class="row justify-content-center">
+  <div *ngIf="qrStream else cancelScann">
+    <div class="guest"  >
+      <div class="ui success message">
+        <p>{{qrStream}}</p>
+      </div>
     </div>
   </div>
+  <div>
+    <ng-template #cancelScann>
+      <button class = "btn private" routerLink="/home">Contacts</button>
+      <button class = "btn private" routerLink="/login">Logout</button>
+    </ng-template>
+  </div>
+
 </div>
+
+
