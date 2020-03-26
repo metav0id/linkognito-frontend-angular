@@ -1,6 +1,5 @@
-<div class="container">
+<div class="container fullHeight-center">
   <h2>Chat</h2>
-  <h3>Nachrichten</h3>
 
   <div class="chat-verlauf" *ngIf="messagesList">
     <ul>
@@ -9,20 +8,22 @@
           {{ message.name }}
         </div>
         <div>
-          <ng-template #myUserName>Ich</ng-template>
+            <ng-template #myUserName>Me</ng-template>
         </div>
-        - {{ message.time }}: {{ message.text }}
+        {{ message.time }} : {{ message.text }}
       </li>
     </ul>
   </div>
 
   <div class="new-message">
-    <label for="messageInput">Neue Nachricht</label>
-    <textarea [(ngModel)]="newMessage.text" id="messageInput"></textarea>
+    <textarea [(ngModel)]="newMessage.text" id="messageInput" placeholder="write an answer" class="d-block" rows="4" cols="50"></textarea>
 
-    <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+    <button class="btn my-2" (click)="sendMessage()" >Send</button>
   </div>
 
-  <button class="btn" routerLink="/contacts/">Back to Contacts</button>
+  <div class="row justify-content-center">
+    <button class="btn col-2" routerLink="/home/">Back to contacts</button>
+  </div>
+
 </div>
 
