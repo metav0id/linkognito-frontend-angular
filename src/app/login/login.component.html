@@ -1,7 +1,7 @@
 <div class="container fullHeight-center">
   <div class="row">
     <div class="col-md-5 mx-auto">
-      <p *ngIf="loginfailed" class= "alert-danger alert">Login failed!</p>
+      <p *ngIf="loginfailed" class="alert-danger alert">Login failed!</p>
       <div class="mb-3">
         <div class="col-md-12 text-center">
           <h1>Login</h1>
@@ -11,7 +11,7 @@
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
-                 placeholder="Enter email" [(ngModel)]="user.email" #email = "ngModel" required>
+                 placeholder="Enter email" [(ngModel)]="user.email" #email="ngModel" required>
           <!--          Validierung-->
           <div *ngIf="email.invalid" class="text-danger">
             *required.
@@ -20,7 +20,7 @@
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp"
-                 placeholder="Enter Password" [(ngModel)]="user.password" #pwd = "ngModel" required minlength="8">
+                 placeholder="Enter Password" [(ngModel)]="user.password" #pwd="ngModel" required minlength="8">
           <!--          Validierung-->
           <div *ngIf="pwd.invalid" class="text-danger">
             <div *ngIf="pwd.errors.required">
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <button type="submit" class=" btn btn-block" (click) = login()>Login</button>
+          <button type="submit" class=" btn btn-block" (click)=login()>Login</button>
         </div>
         <div>
           <hr>
