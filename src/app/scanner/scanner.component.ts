@@ -42,7 +42,7 @@ export class ScannerComponent implements OnInit {
       "name": "new contact",
       qrcode: this.qrStream,
       active: true,
-      nickname:"anonymous"
+      nickname: this.loginService.loggedUser.name
     };
   }
 
