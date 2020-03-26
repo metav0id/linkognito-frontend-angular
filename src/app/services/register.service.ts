@@ -12,7 +12,7 @@ export class RegisterService {
   constructor(private http: HttpClient) {}
 
   addNewUser(newUser: User){
-    return this.http.post<IdDto>('http://localhost:8080/registration', newUser);
+    return this.http.post<IdDto>('https://user-modul-menv.herokuapp.com/registration', newUser);
   }
 
   sendNewUserToService(idDto : IdDto) {

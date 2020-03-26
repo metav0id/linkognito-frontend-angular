@@ -7,9 +7,9 @@ import {interval, Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ChatApiServiceService {
-  private readonly URL_READ_NEW_MESSAGES: string = "http://localhost:8080/readNewMessages";
-  private readonly URL_READ_ALL_MESSAGES: string = "http://localhost:8080/readAllMessages";
-  private readonly URL_SEND_NEW_MESSAGE: string = "http://localhost:8080/sendMessage";
+  private readonly URL_READ_NEW_MESSAGES: string = "https://user-modul-menv.herokuapp.com/readNewMessages";
+  private readonly URL_READ_ALL_MESSAGES: string = "https://user-modul-menv.herokuapp.com/readAllMessages";
+  private readonly URL_SEND_NEW_MESSAGE: string = "https://user-modul-menv.herokuapp.com/sendMessage";
 
   //TEST 24.03.
   private httpOptions = {

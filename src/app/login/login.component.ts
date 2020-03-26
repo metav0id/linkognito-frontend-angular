@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
 
   user: User = {email : "", password: ""};
 
+  loginfailed = false;
+
   constructor(
     private loginService: LoginService,
     private router: Router
@@ -21,6 +23,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  formClick(){
+    this.loginfailed = false;
+  }
   login(){
     this.loginService.login(this.user).subscribe(
       (returnUser) => {
@@ -28,7 +33,8 @@ export class LoginComponent implements OnInit {
           this.loginService.loggedUser = returnUser;
           this.router.navigate(['/home']);
         } else {
-          this.router.navigate(['/login'])
+          this.loginfailed = true;
+          this.user = {email : "", password: ""};
         }
       }
     );
