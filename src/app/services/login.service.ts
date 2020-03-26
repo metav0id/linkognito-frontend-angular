@@ -16,6 +16,6 @@ export class LoginService implements OnInit{
   }
 
   login(user: User): Observable<User>{
-   return this.http.post<User>('http://localhost:8080/login', user)
+   return this.http.post<User>('https://user-modul-menv.herokuapp.com/login', user)
   }
 }
