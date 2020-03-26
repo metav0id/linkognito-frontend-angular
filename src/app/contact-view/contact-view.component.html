@@ -1,3 +1,7 @@
+<div class="container">
+  Hello {{user.name}}
+</div>
+
 <div class="container qrcode">
   <div class="row justify-content-center">
     <button class="btn col-3 mx-3" routerLink="/createQRCode/">Show QR-Code</button>
@@ -20,17 +24,13 @@
     <tr *ngFor="let contact of contacts; index as i">
       <th scope="row">{{ i + 1 }}
       </th>
-      <!--<td (click)="createArray(contact)" routerLink="/chat/{{contact.id}}">-->
       <td [routerLink]="['/chat', contact.addressId]">
         <span class="badge">{{contact.name}}</span>
       </td>
       <td>
         <button routerLink="/update/{{contact.id}}" class="btn badge">edit</button>
       </td>
-      <td>
-        <button (click)="deleteContact(contact)" class="btn badge">delete</button>
 
-      </td>
 
     </tr>
     </tbody>
@@ -38,7 +38,3 @@
 
 
 </div>
-
-
-
-

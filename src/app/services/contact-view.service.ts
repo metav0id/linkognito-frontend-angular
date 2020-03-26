@@ -15,7 +15,7 @@ export class ContactViewService {
   private getContactsUrl = 'http://localhost:8080/readAllContacts';
   private getSingleContactUrl = 'http://localhost:8080/readContact/?id=';
   private updateContactUrl = 'http://localhost:8080/updateContact';
-  private deleteContactUrl = 'http://localhost:8080/deleteContact';
+  private deleteContactUrl = 'http://localhost:8080/deleteContact/?id=';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -57,7 +57,7 @@ export class ContactViewService {
     );
   }
 
-  /** PUT-Method for single contact*/
+  /** PUT-Method for single contact (update or add)*/
 
   updateContact (contact: ContactInterface): Observable<any> {
     return this.http.put(this.updateContactUrl, contact, this.httpOptions).pipe(
@@ -68,22 +68,16 @@ export class ContactViewService {
 
   /** DELETE-Method for single contact*/
 
-  deleteContact(contact: ContactInterface): Observable<ContactInterface> {
-    const id = typeof contact === 'number' ? contact : contact.id;
-    const url = `${this.deleteContactUrl}/${id}`;
+  deleteContact (contact: ContactInterface) {
+    // deleteContact(contact: ContactInterface | number): Observable<ContactInterface> {
+    const url = `${this.deleteContactUrl}`;
 
-   return this.http.delete<ContactInterface>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted contact id=${id}`)),
+    return this.http.post(url, contact, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted contact`)),
       catchError(this.handleError<ContactInterface>('deleteContact'))
     );
   }
 
-  /** ADD-Methode noch nicht implementiert. Zuarbeit von QR-Code noch unklar */
-
-  addContact(contact: ContactInterface): Observable<ContactInterface> {
-    // ToDo: add contact logic
-    return null;
-  }
 
   /** Error-handling for db-access */
 

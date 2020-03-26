@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContactInterface } from '../interfaces/contact.interface';
 import { ContactViewService } from '../services/contact-view.service';
 import {NotificationsService} from "../services/notifications.service";
-
-
-import { MockContacts } from "./MockContacts";
-import {QrScannerService} from '../services/qr-scanner.service';
-
+import {LoginService} from '../services/login.service';
+import {User} from "../interfaces/user";
 
 @Component({
   selector: 'app-contact-view',
@@ -16,32 +13,23 @@ import {QrScannerService} from '../services/qr-scanner.service';
 export class ContactViewComponent implements OnInit {
 
   contacts: ContactInterface[];
-  chatContact : string [];
+  public user: User = this.loginService.loggedUser;
 
   //Test
   id: number = 5;
 
 
   getContacts(): void {
-    this.contacts = MockContacts;
-    // this.contactViewService.getContacts().subscribe(contacts => this.contacts = contacts);
+    // this.contacts = MockContacts;
+    this.contactViewService.getContacts().subscribe(contacts => this.contacts = contacts);
   }
 
-  deleteContact(contact: ContactInterface): void {
-    this.contacts = this.contacts.filter(c => c !== contact);
-    this.contactViewService.deleteContact(contact).subscribe();
-  }
-
-  constructor(private contactViewService: ContactViewService, private notificationsService: NotificationsService) { }
+  constructor(private contactViewService: ContactViewService,
+              private notificationsService: NotificationsService,
+              private loginService: LoginService) { }
 
   ngOnInit() {
     this.getContacts();
   }
-
-  // createArray(contact) {
-  //   this.chatContact[0] = contact.id;
-  //   this.chatContact[1] = contact.addressId;
-  //   this.chatContact[2] = contact.name;
-  // }
 
 }

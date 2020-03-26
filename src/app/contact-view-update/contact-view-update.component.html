@@ -1,33 +1,40 @@
 <div class="container">
-<div *ngIf="contact">
-  <h2 class="orange"> change contact-name</h2>
-  <div>
-    <label>name:
-      <input [(ngModel)]="contact.name" placeholder="name" />
-    </label>
-  </div>
-  <h2 class="orange"> change your contact-specific nickname</h2>
-  <div>
-    <label>nickname:
-      <input [(ngModel)]="contact.nickname" placeholder="name" />
-    </label>
-  </div>
-  <div *ngIf="contact.active == true">
-    <label>
-      contact is active:
-    </label>
-  </div>
-  <div *ngIf="contact.active == false">
-    <label>
-      contact is expired:
-    </label>
-  </div>
-  <div>
-    <button class="btn btn-primary" (click)="editContact()">confirm</button>
-  </div>
-
-  <div>
-  <button class="btn btn-primary" (click)="goBack()">abort</button>
-  </div>
+  Hello {{user.name}}
 </div>
+
+<div class="container">
+  <div *ngIf="contact">
+    <h2 class="orange"> change contact-name</h2>
+    <div>
+      <label>name:
+        <input [(ngModel)]="contact.name" placeholder="name" />
+      </label>
+    </div>
+    <h2 class="orange"> change your contact-specific nickname</h2>
+    <div>
+      <label>nickname:
+        <input [(ngModel)]="contact.nickname" placeholder="name" />
+      </label>
+    </div>
+    <div *ngIf="contact.active == true">
+      <label>
+        contact is active:
+      </label>
+    </div>
+    <div *ngIf="contact.active == false">
+      <label>
+        contact is expired:
+      </label>
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="editContact()">confirm</button>
+      <button class="btn btn-primary" (click)="goBack()">abort</button>
+      <button class="btn btn-primary" *ngIf="contact.active == true" (click)="deactivateContact()">end conversation</button>
+      <button class="btn btn-primary" (click)="deleteContact(contact)">delete contact</button>
+    </div>
+
+    <div>
+
+    </div>
+  </div>
 </div>
