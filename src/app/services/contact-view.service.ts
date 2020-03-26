@@ -12,10 +12,12 @@ import { catchError, map, tap } from "rxjs/operators";
 })
 export class ContactViewService {
 
-  private getContactsUrl = 'http://localhost:8080/readAllContacts';
-  private getSingleContactUrl = 'http://localhost:8080/readContact/?id=';
-  private updateContactUrl = 'http://localhost:8080/updateContact';
-  private deleteContactUrl = 'http://localhost:8080/deleteContact/?id=';
+  private readonly USER_URL: string = 'https://user-modul-menv.herokuapp.com';
+
+  private getContactsUrl = this.USER_URL + '/readAllContacts';
+  private getSingleContactUrl = this.USER_URL + '/readContact/?id=';
+  private updateContactUrl = this.USER_URL + '/updateContact';
+  private deleteContactUrl = this.USER_URL + '/deleteContact/?id=';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
