@@ -14,11 +14,12 @@ import {User} from "../interfaces/user";
 })
 export class ContactViewService {
 
-  private getContactsUrl = 'http://localhost:8080/readAllContacts/?id=';
-  private getSingleContactUrl = 'http://localhost:8080/readContact/?id=';
-  private updateContactUrl = 'http://localhost:8080/updateContact';
-  private deleteContactUrl = 'http://localhost:8080/deleteContact/?id=';
-  public user: User = this.loginService.loggedUser;
+  private readonly USER_URL: string = 'https://user-modul-menv.herokuapp.com';
+
+  private getContactsUrl = this.USER_URL + '/readAllContacts';
+  private getSingleContactUrl = this.USER_URL + '/readContact/?id=';
+  private updateContactUrl = this.USER_URL + '/updateContact';
+  private deleteContactUrl = this.USER_URL + '/deleteContact/?id=';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -45,6 +46,9 @@ export class ContactViewService {
         catchError(this.handleError<ContactInterface[]>('getContacts()', []))
       );
   }
+
+  //ToDo: Implement GET-method for external services db which will
+  // be executed whenever app is started.
 
 
   /** GET-Method for single contact*/

@@ -1,16 +1,10 @@
 {
   "hosting": {
-    "public": "dist/GraduationProjectUserNg",
+    "public": "exit",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }
