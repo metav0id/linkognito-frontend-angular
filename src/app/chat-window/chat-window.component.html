@@ -1,35 +1,29 @@
-
-<div class="container">
+<div class="container fullHeight-center">
   <h2>Chat</h2>
-</div>
 
-<div class="container">
-  <h3>Nachrichten</h3>
-</div>
-<div class="container" *ngIf="messagesList">
-  <ul>
-    <li *ngFor="let message of messagesList">
-      <div *ngIf="message.id != myUserID; else myUserName">
-        {{ message.name }}
-      </div>
-      <div>
-        <ng-template #myUserName>Ich</ng-template>
-      </div>
-       - {{ message.time }}: {{ message.text }}
-    </li>
-  </ul>
-</div>
+  <div class="chat-verlauf" *ngIf="messagesList">
+    <ul>
+      <li *ngFor="let message of messagesList">
+        <div *ngIf="message.id != myUserID; else myUserName">
+          {{ message.name }}
+        </div>
+        <div>
+            <ng-template #myUserName>Me</ng-template>
+        </div>
+        {{ message.time }} : {{ message.text }}
+      </li>
+    </ul>
+  </div>
 
-<div class="container">
-    <div>
-      <label for="messageInput">Neue Nachricht</label>
-      <br>
-      <textarea [(ngModel)]="newMessage.text" id="messageInput"></textarea>
-    </div>
-    <button class="btn btn-primary" (click)="sendMessage()">Senden</button>
+  <div class="new-message">
+    <textarea [(ngModel)]="newMessage.text" id="messageInput" placeholder="write an answer" class="d-block" rows="4" cols="50"></textarea>
+
+    <button class="btn my-2" (click)="sendMessage()" >Send</button>
+  </div>
+
+  <div class="row justify-content-center">
+    <button class="btn col-2" routerLink="/home/">Back to contacts</button>
+  </div>
 
 </div>
 
-<div class="container">
-  <button class="btn btn-primary" routerLink="/contacts/">unsubscribe</button>
-</div>
