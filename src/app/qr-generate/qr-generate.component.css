@@ -5,3 +5,7 @@
 p {
   text-align: center;
 }
+
+.btn {
+  margin: auto 10px;
+}

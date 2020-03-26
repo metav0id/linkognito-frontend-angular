@@ -20,6 +20,7 @@ export class ContactViewService {
   private getSingleContactUrl = this.USER_URL + '/readContact/?id=';
   private updateContactUrl = this.USER_URL + '/updateContact';
   private deleteContactUrl = this.USER_URL + '/deleteContact/?id=';
+  private user : User = this.loginService.loggedUser;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
