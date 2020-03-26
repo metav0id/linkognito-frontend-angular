@@ -1,7 +1,7 @@
 <div class="container fullHeight-center">
   <h2>Chat</h2>
 
-  <div class="chat-verlauf" *ngIf="messagesList">
+  <div id="chat-verlauf" *ngIf="messagesList">
     <ul>
       <li *ngFor="let message of messagesList">
         <div *ngIf="message.id != myUserID; else myUserName">
@@ -15,6 +15,7 @@
     </ul>
   </div>
 
+
   <div class="new-message">
     <textarea [(ngModel)]="newMessage.text" id="messageInput" placeholder="write an answer" class="d-block" rows="4" cols="50"></textarea>
 
@@ -26,4 +27,5 @@
   </div>
 
 </div>
+
 
