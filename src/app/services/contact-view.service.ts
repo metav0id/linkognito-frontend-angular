@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { NotificationsService} from "./notifications.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from "rxjs/operators";
+import {LoginService} from '../services/login.service';
+import {User} from "../interfaces/user";
 
 
 
@@ -12,16 +14,19 @@ import { catchError, map, tap } from "rxjs/operators";
 })
 export class ContactViewService {
 
-  private getContactsUrl = 'http://localhost:8080/readAllContacts';
+  private getContactsUrl = 'http://localhost:8080/readAllContacts/?id=';
   private getSingleContactUrl = 'http://localhost:8080/readContact/?id=';
   private updateContactUrl = 'http://localhost:8080/updateContact';
   private deleteContactUrl = 'http://localhost:8080/deleteContact/?id=';
+  public user: User = this.loginService.loggedUser;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
-  constructor(private http: HttpClient, private notificationsService: NotificationsService) { }
+  constructor(private http: HttpClient,
+              private notificationsService: NotificationsService,
+              private loginService: LoginService) { }
 
   /** log to save notifications:
    * auto-delete should be implemented for final version, current process is useful for
@@ -34,17 +39,12 @@ export class ContactViewService {
   /** GET-Method for contact-list*/
 
   getContacts(): Observable<ContactInterface[]> {
-
-
-    return this.http.get<ContactInterface[]>(this.getContactsUrl)
+    return this.http.post<ContactInterface[]>(this.getContactsUrl, this.user)
       .pipe(
         tap(_ => this.log('loaded contacts from database')),
         catchError(this.handleError<ContactInterface[]>('getContacts()', []))
       );
   }
-
-  //ToDo: Implement GET-method for external services db which will
-  // be executed whenever app is started.
 
 
   /** GET-Method for single contact*/
