@@ -35,6 +35,9 @@ export class ScannerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Initiate the elements of the new Contact after a successful Qr-scan
+   * */
   initContact(scannId: number) {
     this.contactInterface = {
       "id": this.loginService.loggedUser.id,
@@ -56,15 +59,28 @@ export class ScannerComponent implements OnInit {
 
   }
 
+
+  /**
+   * After a successful Qr-scan the appropriate Qr-Stream will be saved
+   * and a new Connection will be sent to Service-Team.
+   * */
   onCodeResult(resultString: string): void {
     this.qrStream = resultString;
     this.checkScann();
   }
 
+  /**
+   * Activate the scanner after permission
+   * */
   onHasPermission(has: boolean): void {
     this.hasPermission = has;
   }
 
+
+  /**
+   * Send new Connection to Service-Team if the Qr-Scann occurs
+   * and navigate to success-scan page.
+   * */
   checkScann(){
     if (this.qrStream){
       this.sendNewConnectionToService();
@@ -72,14 +88,24 @@ export class ScannerComponent implements OnInit {
     }
   }
 
+
+  /**
+   * Send new Connection with Qr-Stream to Service-Team which responds with the appropriate Address-Id.
+   * The new contact data will be saved in the local database of User-Modul.
+   * */
   sendNewConnectionToService (){
       this.newConnection.code = this.qrStream;
-      console.log(this.newConnection.code);
+
+      // Send new Connection with Qr-Stream to Service-Team
       this.qrScannerService.sendNewConnectionToService(this.newConnection).subscribe(
+
+        //response with the appropriate Address-Id
         (result) => {
           console.log(`result.addressId = ${result.addressId}`);
           console.log(result.addressId);
           this.initContact(result.addressId);
+
+          // Save addressId in local database
           this.contactViewService.updateContact(this.contactInterface).subscribe(
             () => {
               console.log('addressId transmitted');

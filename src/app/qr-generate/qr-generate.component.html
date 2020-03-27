@@ -1,12 +1,14 @@
 <div class="container fullHeight-center">
   <p>QR-Code</p>
   <div class="row justify-content-center">
+    <!-- This is the npm package in-charge of generation the QR -->
     <qrcode [qrdata]="qrdata" [size]="256" [level]="'M'"></qrcode>
   </div>
   <br>
   <p>QR-Stream</p>
   <div class="row justify-content-center">
     <label>
+      <!-- Input Feld for appropriate Qr-Stream -->
       <input type="text"
              class="form-control"
              [(ngModel)]="qrdata"
@@ -16,7 +18,9 @@
     </label>
   </div>
     <div class="row justify-content-center">
+      <!-- Button to Contacts -->
       <button class = "btn private" routerLink="/home">Contacts</button>
+      <!-- Button to logout -->
       <button class = "btn private" routerLink="/login">Logout</button>
     </div>
 </div>

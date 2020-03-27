@@ -12,22 +12,19 @@ import {LoginService} from '../services/login.service';
 })
 export class QrGenerateComponent{
 
-  public qrdata: string = null;
-  public userIdDto: IdDto = {"id": this.loginService.loggedUser.id};
-
-  // constructor(private qrGenerateService: QrGenerateService) {
-  //   console.log('QrGenerateComponent running');
-  //   this.qrdata = 'f9g5b316-128c-4865-b606-2de686239054U';
-  //   this.updateQrStream();
-  // }
+  public qrdata: string = null; //Qr-Stream will be generated to Qr-Code
+  public userIdDto: IdDto = {"id": this.loginService.loggedUser.id}; //Json with Current-User-Id
 
   constructor(private qrGenerateService: QrGenerateService, private loginService: LoginService) {
     console.log('QrGenerateComponent running');
-    // this.userIdDto.id = this.loginService.loggedUser.id;
     this.qrdata = 'no code from server';
     this.updateQrStream();
   }
 
+  /**
+   * Current User-ID will be sent to Service-Modul
+   * which responds with the appropriate Qr-Stream.
+  * */
   updateQrStream(): void {
     console.log(`this.userIdDto.id = ${this.userIdDto.id}`);
     this.qrGenerateService.sendUserIdToService(this.userIdDto).subscribe(
