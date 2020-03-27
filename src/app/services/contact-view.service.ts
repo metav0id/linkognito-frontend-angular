@@ -41,6 +41,8 @@ export class ContactViewService {
   /** GET-Method for contact-list*/
 
   getContacts(): Observable<ContactInterface[]> {
+
+    console.log("UserID im getContacts contact view service.ts: " + this.user.id);
     return this.http.post<ContactInterface[]>(this.getContactsUrl, this.user)
       .pipe(
         tap(_ => this.log('loaded contacts from database')),

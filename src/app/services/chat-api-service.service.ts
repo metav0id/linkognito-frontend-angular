@@ -54,6 +54,7 @@ export class ChatApiServiceService {
     // newChatMessage.name = "Enrico";
     console.log(newChatMessage);
     console.log(this.URL_SEND_NEW_MESSAGE);
-    return this.httpClient.post(this.URL_SEND_NEW_MESSAGE,newChatMessage, this.httpOptions);
+    return this.httpClient.post<ChatMessage>(this.URL_SEND_NEW_MESSAGE,newChatMessage);
+    //return this.httpClient.post(this.URL_SEND_NEW_MESSAGE,newChatMessage, this.httpOptions);
   }
 }

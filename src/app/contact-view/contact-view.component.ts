@@ -20,8 +20,9 @@ export class ContactViewComponent implements OnInit {
 
 
   getContacts(): void {
-    this.contactViewService.getContacts().subscribe(contacts => this.contacts = contacts);
-    console.log(this.contacts);
+    this.contactViewService.getContacts().subscribe(contacts => {
+      this.contacts = contacts;
+      console.log(this.contacts);});
   }
 
   constructor(private contactViewService: ContactViewService,
